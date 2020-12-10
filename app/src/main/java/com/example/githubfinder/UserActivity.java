@@ -41,8 +41,7 @@ public class UserActivity extends AppCompatActivity {
         recyclerView= findViewById(R.id.recyclerView);
         Intent intent= getIntent();
         String username= intent.getStringExtra("username");
-        Retrofit retrofit= new Retrofit.Builder().baseUrl(GithubApi.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        GithubApi githubApi= retrofit.create(GithubApi.class);
+        GithubApi githubApi= getRetrofit.getInstance().create(GithubApi.class);
         Call<User> call= githubApi.getInfo(username);
         call.enqueue(new Callback<User>() {
             @SuppressLint("SetTextI18n")
@@ -81,7 +80,8 @@ public class UserActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<UserRepo>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Could Not Find Repo",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 
