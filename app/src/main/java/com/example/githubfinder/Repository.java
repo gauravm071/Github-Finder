@@ -1,6 +1,8 @@
 package com.example.githubfinder;
 
 import android.annotation.SuppressLint;
+import android.widget.Toast;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,7 +19,9 @@ public interface Repository {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.body()!=null && response.body()!=null && response.code()==200){
                     apiCallBack.onSuccess(response);
-
+                }
+                else{
+                    apiCallBack.onError();
                 }
 
             }

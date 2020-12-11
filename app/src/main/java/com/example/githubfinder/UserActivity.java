@@ -76,6 +76,12 @@ public class UserActivity extends AppCompatActivity {
             public void onFailure() {
                 Toast.makeText(getApplicationContext(),"Failed to get Data",Toast.LENGTH_LONG).show();
             }
+
+            @Override
+            public void onError() {
+                Toast.makeText(getApplicationContext(),"Wrong Username",Toast.LENGTH_SHORT).show();
+                finish();
+            }
         });
 
         Repository.getAllRepo(username, new RepoApiCallback() {
