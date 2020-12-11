@@ -8,6 +8,7 @@ and Make Sure your Internet Connection is On
 
 User info and his Github Repos
 
+![Screenshot from 2020-12-10 16-03-18](https://user-images.githubusercontent.com/56672381/101760862-73477100-3b01-11eb-944b-eebd53426321.png)
 
-![Screenshot from 2020-12-10 15-35-15](https://user-images.githubusercontent.com/56672381/101758083-ee0e8d00-3afd-11eb-88c0-3b1d12cb1173.png)
+
 
