@@ -2,6 +2,7 @@ package com.example.githubfinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +14,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +36,8 @@ public class UserActivity extends AppCompatActivity {
     ImageView userDp;
     RecyclerView recyclerView;
     List<UserRepo> listOfRepo= new ArrayList<>();
+    LottieAnimationView lottieAnimationView,repoloader;
+    CardView cardView,infocard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,47 +49,49 @@ public class UserActivity extends AppCompatActivity {
         following= findViewById(R.id.followings);
         userDp= findViewById(R.id.userDp);
         recyclerView= findViewById(R.id.recyclerView);
+        lottieAnimationView= findViewById(R.id.lottie);
+        repoloader= findViewById(R.id.repoloader);
+        cardView= findViewById(R.id.repoCard);
+        infocard= findViewById(R.id.infocard);
         Intent intent= getIntent();
         String username= intent.getStringExtra("username");
-        GithubApi githubApi= getRetrofit.getInstance().create(GithubApi.class);
-        Call<User> call= githubApi.getInfo(username);
-        call.enqueue(new Callback<User>() {
+
+        Repository.getUserDetails(username,new ApiCallBack() {
             @SuppressLint("SetTextI18n")
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.body()!=null){
-                    User user= response.body();
+            public void onSuccess(Response<User> response) {
+                lottieAnimationView.cancelAnimation();
+                lottieAnimationView.setVisibility(View.GONE);
+                infocard.setVisibility(View.VISIBLE);
+                User user= response.body();
                     name.setText("Name : "+user.getName());
                     email.setText("Email : "+user.getEmail());
                     followers.setText("Followers : "+user.followers);
                     following.setText("Following : "+user.getFollowings());
                     publicRepos.setText("Public Repo : "+user.getPublicRepos());
                     Picasso.with(UserActivity.this).load(user.getImageUrl()).into(userDp);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Wrong Username ",Toast.LENGTH_SHORT).show();
-                    finish();
-                }
             }
+
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure() {
                 Toast.makeText(getApplicationContext(),"Failed to get Data",Toast.LENGTH_LONG).show();
             }
         });
 
-        Call<List<UserRepo>> listCall= githubApi.getRepo(username);
-        listCall.enqueue(new Callback<List<UserRepo>>() {
+        Repository.getAllRepo(username, new RepoApiCallback() {
             @Override
-            public void onResponse(Call<List<UserRepo>> call, Response<List<UserRepo>> response) {
-                if(response.body()!=null){
-                    listOfRepo.addAll(response.body());
-                }
+            public void onSuccess(Response<List<UserRepo>> response) {
+                repoloader.cancelAnimation();
+                repoloader.setVisibility(View.GONE);
+                cardView.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+                listOfRepo.addAll(response.body());
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
                 recyclerView.setAdapter(new RepoAdapter(listOfRepo));
             }
 
             @Override
-            public void onFailure(Call<List<UserRepo>> call, Throwable t) {
+            public void onFailure() {
                 Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_LONG).show();
                 finish();
             }
