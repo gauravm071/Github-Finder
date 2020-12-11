@@ -9,9 +9,7 @@ import retrofit2.http.Path;
 public interface GithubApi {
     public static final String BASE_URL= "https://api.github.com/";
 
-
-
-    @GET("users/{user}")
+    @GET("/users/{user}")
     Call<User> getInfo(@Path("user") String username);
 
     @GET("/users/{user}/repos")
