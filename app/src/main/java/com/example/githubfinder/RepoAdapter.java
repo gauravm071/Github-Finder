@@ -14,9 +14,10 @@ import java.util.List;
 
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
     List<UserRepo> listOfrepo= new ArrayList<>();
-
-    public RepoAdapter(List<UserRepo> listOfrepo) {
+    RepoAdapterInterface repoAdapterInterface;
+    public RepoAdapter(RepoAdapterInterface repoAdapterInterface,List<UserRepo> listOfrepo) {
         this.listOfrepo = listOfrepo;
+        this.repoAdapterInterface=repoAdapterInterface;
     }
 
     @NonNull
@@ -44,6 +45,12 @@ public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.ViewHolder> {
         TextView name, desc, language;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    repoAdapterInterface.onClick(getAdapterPosition());
+                }
+            });
             name= itemView.findViewById(R.id.repoName);
             desc= itemView.findViewById(R.id.repoDesc);
             language= itemView.findViewById(R.id.repoLang);

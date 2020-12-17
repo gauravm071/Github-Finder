@@ -119,8 +119,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:visibility="visible"
             app:lottie_loop="true"
+            android:visibility="invisible"
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/repo" />
 
@@ -131,6 +131,7 @@
             android:layout_marginTop="15dp"
             android:layout_weight="0"
             android:visibility="invisible"
+            android:elevation="12dp"
             app:cardBackgroundColor="#EBF5FB"
             app:cardCornerRadius="20dp">
 

@@ -11,7 +11,7 @@ import retrofit2.Response;
 
 public interface Repository {
     public static void getUserDetails(String username, ApiCallBack apiCallBack){
-        GithubApi githubApi= getRetrofit.getInstance().create(GithubApi.class);
+        GithubApi githubApi= getRetrofit.getInstance(GithubApi.BASE_URL).create(GithubApi.class);
         Call<User> call= githubApi.getInfo(username);
         call.enqueue(new Callback<User>() {
             @SuppressLint("SetTextI18n")
@@ -33,7 +33,7 @@ public interface Repository {
     }
 
     public static void getAllRepo(String username,RepoApiCallback repoApiCallback){
-        GithubApi githubApi= getRetrofit.getInstance().create(GithubApi.class);
+        GithubApi githubApi= getRetrofit.getInstance(GithubApi.BASE_URL).create(GithubApi.class);
         Call<List<UserRepo>> listCall= githubApi.getRepo(username);
         listCall.enqueue(new Callback<List<UserRepo>>() {
             @Override
