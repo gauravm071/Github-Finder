@@ -10,7 +10,8 @@ User info and his Github Repos
 
 ![Screenshot from 2020-12-10 16-03-18](https://user-images.githubusercontent.com/56672381/101760862-73477100-3b01-11eb-944b-eebd53426321.png)
 
-![Screenshot from 2020-12-22 00-14-48](https://user-images.githubusercontent.com/56672381/102811126-ea76e200-43ea-11eb-89f0-e53a7e78fb43.png)
+![Screenshot from 2020-12-22 00-19-33](https://user-images.githubusercontent.com/56672381/102811574-902a5100-43eb-11eb-8fcc-4738444326fc.png)
+
 
 
 
