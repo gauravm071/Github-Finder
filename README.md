@@ -24,8 +24,6 @@ and Make Sure your Internet Connection is On
 
 ![repoDetails](https://user-images.githubusercontent.com/36043230/105714102-f30a8d00-5f41-11eb-938d-3f6294c330ed.jpg)
 
-![Screenshot from 2020-12-22 00-19-33](https://user-images.githubusercontent.com/56672381/102811574-902a5100-43eb-11eb-8fcc-4738444326fc.png)
-
 
 
 
