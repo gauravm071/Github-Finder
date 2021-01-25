@@ -4,25 +4,25 @@ and Make Sure your Internet Connection is On
 
 1.  Splash Screen
 
-![image](https://user-images.githubusercontent.com/36043230/105712956-8c38a400-5f40-11eb-8a54-f7cc01848a19.png)
+![download](https://user-images.githubusercontent.com/36043230/105714105-f4d45080-5f41-11eb-8bcd-c43de78d6a1d.jpg)
 
 
 
 2. Login Screen
 
-![image](https://user-images.githubusercontent.com/36043230/105713018-a2466480-5f40-11eb-98f0-b6a7708a7065.png)
+![loginGithub](https://user-images.githubusercontent.com/36043230/105714109-f6057d80-5f41-11eb-95fc-4e1267efe914.jpg)
 
 
 
 2. User Profile
 
-![image](https://user-images.githubusercontent.com/36043230/105713039-a8d4dc00-5f40-11eb-892f-8e53f19e45e0.png)
+![userGithub](https://user-images.githubusercontent.com/36043230/105714106-f56ce700-5f41-11eb-9b40-5f0b4ff5363a.jpg)
 
 
 
 3. Repo Details
 
-![image](https://user-images.githubusercontent.com/36043230/105712973-922e8500-5f40-11eb-884b-602aa0558ae6.png)
+![repoDetails](https://user-images.githubusercontent.com/36043230/105714102-f30a8d00-5f41-11eb-938d-3f6294c330ed.jpg)
 
 
 
