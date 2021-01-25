@@ -13,7 +13,7 @@ public interface Repository {
     public static void getUserDetails(String username, ApiCallBack apiCallBack){
         GithubApi githubApi= getRetrofit.getInstance(GithubApi.BASE_URL).create(GithubApi.class);
         Call<User> call= githubApi.getInfo(username);
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<User>(){
             @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

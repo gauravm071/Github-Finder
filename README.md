@@ -2,13 +2,27 @@
 An android Application in which user can search his/her Github profile and can see some User Info and can see all his/her Repository in this Application
 and Make Sure your Internet Connection is On
 
+1.  Splash Screen
 
-![Screenshot from 2020-12-10 15-35-20](https://user-images.githubusercontent.com/56672381/101758076-ebac3300-3afd-11eb-8aa2-a5fed2b7639d.png)
+![download](https://user-images.githubusercontent.com/36043230/105714105-f4d45080-5f41-11eb-8bcd-c43de78d6a1d.jpg)
 
 
-User info and his Github Repos
 
-![Screenshot from 2020-12-10 16-03-18](https://user-images.githubusercontent.com/56672381/101760862-73477100-3b01-11eb-944b-eebd53426321.png)
+2. Login Screen
+
+![loginGithub](https://user-images.githubusercontent.com/36043230/105714109-f6057d80-5f41-11eb-95fc-4e1267efe914.jpg)
+
+
+
+2. User Profile
+
+![userGithub](https://user-images.githubusercontent.com/36043230/105714106-f56ce700-5f41-11eb-9b40-5f0b4ff5363a.jpg)
+
+
+
+3. Repo Details
+
+![repoDetails](https://user-images.githubusercontent.com/36043230/105714102-f30a8d00-5f41-11eb-938d-3f6294c330ed.jpg)
 
 ![Screenshot from 2020-12-22 00-19-33](https://user-images.githubusercontent.com/56672381/102811574-902a5100-43eb-11eb-8fcc-4738444326fc.png)
 

@@ -5,191 +5,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background2"
+    android:background="@drawable/ic_details_back"
     android:padding="10dp"
     tools:context=".RepoActivity">
-
-    <ImageView
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center">
+<!--       <com.mikhaellopez.circularimageview.CircularImageView-->
+<!--           android:id="@+id/ivBack"-->
+<!--           android:layout_width="30dp"-->
+<!--           android:layout_height="30dp"-->
+<!--           android:elevation="20dp"-->
+<!--           android:layout_marginLeft="8dp"-->
+<!--           app:srcCompat="@drawable/ic_arrow_back_24"-->
+<!--           android:layout_gravity="left"/>-->
+     <ImageView
         android:id="@+id/cat"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="10dp" />
+        android:src="@drawable/github" />
+   </LinearLayout>
 
-    <TextView
-        android:id="@+id/RepoName"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRepository"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#009688"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Language :"
-            android:textColor="#4CAF50"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/RepoLanguage"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:scrollbars="vertical"
-            android:textSize="18sp"
-            tools:ignore="DuplicateIds" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:background="@drawable/purple_card_border"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <LinearLayout
+            <TextView
+                android:id="@+id/RepoName"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Repository"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/fork" />
+
+                <TextView
+                    android:id="@+id/forksCount"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="32dp"
+                    android:text="Forks"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/branch" />
+
+                <TextView
+                    android:id="@+id/default_branch"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="master"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvRepository">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Default Branch :"
-            android:textColor="#5F25F6"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/default_branch"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:background="@drawable/card_border"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/language" />
+
+                <TextView
+                    android:id="@+id/RepoLanguage"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:maxLines="2"
+                    android:paddingLeft="16dp"
+                    android:text="Languages"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/contributor" />
+
+                <TextView
+                    android:id="@+id/RepoContributor"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:paddingLeft="16dp"
+                    android:text="contributor"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/decription" />
+
+                <TextView
+                    android:id="@+id/RepoDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:paddingLeft="16dp"
+                    android:text="Description"
+                    android:textStyle="italic" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Contributors :"
-            android:textColor="#2599F6"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/RepoContributor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:maxLines="3"
-            android:scrollbars="vertical"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="No. of Forks :"
-            android:textColor="#F625D9"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/forksCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Description :"
-            android:textColor="#F68A25"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/RepoDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:scrollbars="vertical"
-            android:text=" "
-            android:textSize="16sp" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:gravity="center"
-        android:text="Click To The Given Link Below To Know More About Your Repository"
-        android:textColor="#25A5F6"
-        android:textSize="15sp"
-        android:textStyle="bold|italic" />
-
-    <TextView
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/RepoUrl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="15dp"
-        android:autoLink="web"
-        android:clickable="true"
-        android:gravity="center"
-        android:textSize="18sp" />
+        android:layout_height="60dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="90dp"
+        android:text="MORE"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:background="@drawable/background" />
+    </LinearLayout>
 </LinearLayout>

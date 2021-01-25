@@ -40,7 +40,8 @@ public class UserActivity extends AppCompatActivity implements RepoAdapterInterf
     ImageView userDp;
     RecyclerView recyclerView;
     List<UserRepo> listOfRepo = new ArrayList<>();
-    LottieAnimationView lottieAnimationView, repoloader;
+//    LottieAnimationView lottieAnimationView, repoloader;
+    ImageView ivLogout;
     CardView cardView, infocard;
 
     @Override
@@ -48,33 +49,43 @@ public class UserActivity extends AppCompatActivity implements RepoAdapterInterf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         name = findViewById(R.id.name);
-        email = findViewById(R.id.email);
+        //email = findViewById(R.id.email);
         publicRepos = findViewById(R.id.publicrepos);
         followers = findViewById(R.id.followers);
         following = findViewById(R.id.followings);
         userDp = findViewById(R.id.userDp);
         recyclerView = findViewById(R.id.recyclerView);
-        lottieAnimationView = findViewById(R.id.lottie);
-        repoloader = findViewById(R.id.repoloader);
-        cardView = findViewById(R.id.repoCard);
-        infocard = findViewById(R.id.infocard);
+        ivLogout= findViewById(R.id.ivLogout);
+       // lottieAnimationView = findViewById(R.id.lottie);
+//        repoloader = findViewById(R.id.repoloader);
+//        cardView = findViewById(R.id.repoCard);
+//        infocard = findViewById(R.id.infocard);
+        ivLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLoggedIn", false).apply();
+                editor.commit();
+                finish();
+            }
+        });
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-
         Repository.getUserDetails(username, new ApiCallBack() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(Response<User> response) {
-                lottieAnimationView.cancelAnimation();
-                lottieAnimationView.setVisibility(View.GONE);
-                repoloader.setVisibility(View.VISIBLE);
-                infocard.setVisibility(View.VISIBLE);
+//                lottieAnimationView.cancelAnimation();
+//                lottieAnimationView.setVisibility(View.GONE);
+//                repoloader.setVisibility(View.VISIBLE);
+//                infocard.setVisibility(View.VISIBLE);
                 User user = response.body();
-                name.setText("Name : " + user.getName());
-                email.setText("Email : " + user.getEmail());
-                followers.setText("Followers : " + user.followers);
-                following.setText("Following : " + user.getFollowings());
-                publicRepos.setText("Public Repo : " + user.getPublicRepos());
+                name.setText(user.getName());
+               // email.setText("Email : " + user.getEmail());
+                followers.setText(user.followers);
+                following.setText(user.getFollowings());
+                publicRepos.setText(user.getPublicRepos());
                 Picasso.with(UserActivity.this).load(user.getImageUrl()).into(userDp);
             }
 
@@ -94,9 +105,9 @@ public class UserActivity extends AppCompatActivity implements RepoAdapterInterf
         Repository.getAllRepo(username, new RepoApiCallback() {
             @Override
             public void onSuccess(Response<List<UserRepo>> response) {
-                repoloader.cancelAnimation();
-                repoloader.setVisibility(View.GONE);
-                cardView.setVisibility(View.VISIBLE);
+//                repoloader.cancelAnimation();
+//                repoloader.setVisibility(View.GONE);
+                //cardView.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.VISIBLE);
                 listOfRepo.addAll(response.body());
                 setAdapter();
@@ -124,24 +135,22 @@ public class UserActivity extends AppCompatActivity implements RepoAdapterInterf
         startActivity(intent);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.logout, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.logout, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isLoggedIn", false).apply();
-        editor.commit();
-        finish();
-        return true;
-    }
-
-
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putBoolean("isLoggedIn", false).apply();
+//        editor.commit();
+//        finish();
+//        return true;
+//    }
     @Override
     public void onClick(int position) {
         UserRepo userRepo = listOfRepo.get(position);

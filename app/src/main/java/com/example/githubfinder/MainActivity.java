@@ -14,14 +14,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     EditText username;
     Button login;
-    TextView error;
+  //  TextView error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         username= findViewById(R.id.etUsername);
         login= findViewById(R.id.login);
-        error= findViewById(R.id.error);
+        //error= findViewById(R.id.error);
         SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);
         boolean hasLoggedIn= sharedPreferences.getBoolean("isLoggedIn",false);
         if(hasLoggedIn){
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(username.getText().toString().length()==0){
-                        error.setText("Please enter Your Github Username");
+                      //  error.setText("Please enter Your Github Username");
                     }
                     else if(username.getText().toString().length()>0){
-                        error.setText("");
+                       // error.setText("");
                         SharedPreferences sharedPreferences= getSharedPreferences("User",MODE_PRIVATE);
                         SharedPreferences.Editor editor= sharedPreferences.edit();
                         editor.putString("user",username.getText().toString()).apply();

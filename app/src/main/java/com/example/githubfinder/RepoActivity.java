@@ -1,12 +1,15 @@
 package com.example.githubfinder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RepoActivity extends AppCompatActivity {
-    TextView repoName,repodesc,language,forkCount,defaultBranch,repoUrl,contributors,tv;
-    ImageView imageView;
+    TextView repoName,repodesc,language,forkCount,defaultBranch,contributors,tv;
+    AppCompatButton repoUrl;
+    ImageView imageView,ivBack;
     final String[] myLanguages = {""};
     String myContributors="";
     List<Contributors> contributorsList= new ArrayList<>();
@@ -34,41 +38,46 @@ public class RepoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repo);
-        Intent intent= getIntent();
-        String userRepo= intent.getStringExtra("userRepo");
-        Gson gson= new Gson();
-        repo= gson.fromJson(userRepo,UserRepo.class);
+        Intent intent = getIntent();
+        String userRepo = intent.getStringExtra("userRepo");
+        Gson gson = new Gson();
+        repo = gson.fromJson(userRepo, UserRepo.class);
 
-        repoName= findViewById(R.id.RepoName);
-        repodesc= findViewById(R.id.RepoDesc);
-        language= findViewById(R.id.RepoLanguage);
-        contributors= findViewById(R.id.RepoContributor);
-        forkCount= findViewById(R.id.forksCount);
-        defaultBranch= findViewById(R.id.default_branch);
-        repoUrl= findViewById(R.id.RepoUrl);
-        imageView= findViewById(R.id.cat);
+        repoName = findViewById(R.id.RepoName);
+        repodesc = findViewById(R.id.RepoDesc);
+        language = findViewById(R.id.RepoLanguage);
+        contributors = findViewById(R.id.RepoContributor);
+        forkCount = findViewById(R.id.forksCount);
+        defaultBranch = findViewById(R.id.default_branch);
+        repoUrl = findViewById(R.id.RepoUrl);
+        imageView = findViewById(R.id.cat);
+      //  ivBack = findViewById(R.id.ivBack);
         imageView.setImageResource(R.drawable.github);
-        repoUrl.setText(repo.getUrl());
+        //repoUrl.setText(repo.getUrl());
+        repoUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(repo.getUrl());
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
+            }
+        });
         repoName.setText(repo.getName());
         forkCount.setText(repo.getForksCount());
         defaultBranch.setText(repo.getDefaultBranch());
         contributors.setMovementMethod(new ScrollingMovementMethod());
-        if(repo.getDescription()==null){
+        if (repo.getDescription() == null) {
             repodesc.setText("No Description Provided");
-        }
-        else {
+        } else {
             repodesc.setText(repo.getDescription());
             repodesc.setMovementMethod(new ScrollingMovementMethod());
         }
 
-       if(repo.getLanguage()!=null){
-           repolanguages();
-       }
-       else{
-           language.setText("No Language Provided");
-       }
-       repoContributors();
-
+        if (repo.getLanguage() != null) {
+            repolanguages();
+        } else {
+            language.setText("No Language Provided");
+        }
+        repoContributors();
     }
     void repolanguages(){
         GithubApi githubApi= getLanguages.getInstance(repo.getLanguagesurl()).create(GithubApi.class);
